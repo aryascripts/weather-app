@@ -5,8 +5,6 @@ html {
 
 * {
   box-sizing: inherit;
-  padding: inherit;
-  margin: inherit;
 }
 
 #root {
