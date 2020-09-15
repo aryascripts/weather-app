@@ -1,3 +1,14 @@
+html {
+  box-sizing: border-box;
+  padding: 0; margin: 0;
+}
+
+* {
+  box-sizing: inherit;
+  padding: inherit;
+  margin: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
