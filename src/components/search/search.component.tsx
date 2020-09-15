@@ -14,13 +14,16 @@ export function SearchComponent(props: SearchComponentProps) {
 		if (val.length < 6 && numbers.test(val)) {
 			setZip(val);
 		}
+		if (val.length === 5) {
+			// TODO - call the service to fetch the current weather
+		}
 
 	}
 
 	return (
 		<div className="search-component">
 			<div className="search-bar">
-				<input type="text" onChange={updateInputState} value={zip} placeholder="Zip Code" />
+				<input type="text" onChange={updateInputState} value={zip} placeholder="search city (zip)" />
 			</div>
 			<div className="search-results">
 

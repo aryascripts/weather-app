@@ -21,6 +21,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  font-size: 32px;
+  font-family: 'Helvetical', sans-serif;
+  color: white;
+  font-weight: 200;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
