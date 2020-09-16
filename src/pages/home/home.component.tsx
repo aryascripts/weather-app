@@ -9,7 +9,7 @@ export function HomeComponent(props: HomeComponentProps) {
 	return (
 		<div className="home-component">
 			<div className="search-wrapper">
-				<h1 className="text-center">hello ________.</h1>
+				<h1 className="text-center">hello <input type="text" placeholder="your beautiful name" />.</h1>
 				<SearchComponent />
 			</div>
 		</div>

@@ -1,3 +1,4 @@
+@import './scss/base';
 html {
   box-sizing: border-box;
   padding: 0; margin: 0;
@@ -22,10 +23,7 @@ body {
 }
 
 h1 {
-  font-size: 32px;
-  font-family: 'Helvetical', sans-serif;
-  color: white;
-  font-weight: 200;
+  @extend %h1;
 }
 
 code {
