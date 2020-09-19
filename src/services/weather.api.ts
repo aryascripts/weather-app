@@ -7,7 +7,7 @@ class WeatherApiSingleton {
 	private readonly Weather25 = `${this.baseURI}/data/2.5/weather`;
 
 	private getWeatherUrl(zip: string): string {
-		return `${this.Weather25}/?zip=${zip}&appid=${Environment.WEATHER_API_KEY}`
+		return `${this.Weather25}/?zip=${zip}&appid=${Environment.WEATHER_API_KEY}`;
 	}
 
 

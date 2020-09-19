@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './search.component.scss';
+import { WeatherApi } from '../../services/weather.api';
 
 export type SearchComponentProps = {};
 
@@ -11,11 +12,13 @@ export function SearchComponent(props: SearchComponentProps) {
 
 	const updateInputState = (event: any) => {
 		const val = event.target.value;
-		if (val.length < 6 && numbers.test(val)) {
+		if (val === '' || val.length < 6 && numbers.test(val)) {
 			setZip(val);
 		}
 		if (val.length === 5) {
 			// TODO - call the service to fetch the current weather
+			WeatherApi.getCurrentWeather(val)
+			.then(response => console.log(response));
 		}
 
 	}
