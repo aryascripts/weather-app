@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {SearchBar} from './../../components/Search/SearchBar/SearchBar';
 import Title from '../../components/Title/Title';
 import { USERNAME_KEY } from '../../config/Variables';
 import './Home.scss';
@@ -16,9 +17,13 @@ export default function (props: HomeProps) {
 
     return (
         <div className="home-page">
+            <div className="max800 center column">
             <Title 
                 setUsername={setUsername} 
                 userName={userName}/>
+
+            <SearchBar />
+            </div>
         </div>
     )
 };
