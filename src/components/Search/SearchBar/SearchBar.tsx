@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useData from '../../../apis/hooks/useData';
+import { Environment } from '../../../config/Environment';
 import './SearchBar.scss';
 
 interface SearchBarProps {
-
+    handleSearchUpdate: (zip: string) => void
 };
 
 const numbersOnly = new RegExp('^[0-9]+$');
@@ -16,12 +18,15 @@ export function SearchBar(props: SearchBarProps) {
         if (val.length < 6 && numbersOnly.test(val)) {
             setSearchTerm(val);
         }
-    }
+    };
 
     useEffect(() => {
         if (searchTerm.length === 5) {
-            // Call API here
-            
+            props.handleSearchUpdate(searchTerm);
+        }
+
+        else {
+            props.handleSearchUpdate('');
         }
     }, [searchTerm]);
 
