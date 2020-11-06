@@ -17,3 +17,21 @@ h1 {
 
 .flex { display: flex; }
 .column { @extend .flex; flex-direction: column; }
+
+
+.arrow-up {
+    width: 0;
+    display: inline-block;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid #FF8888;
+}
+.arrow-down {
+    width: 0;
+    display: inline-block;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 16px solid #88D4FF;
+}

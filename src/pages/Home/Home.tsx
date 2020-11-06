@@ -3,6 +3,7 @@ import {SearchBar} from './../../components/Search/SearchBar/SearchBar';
 import Title from '../../components/Title/Title';
 import { USERNAME_KEY } from '../../config/Variables';
 import './Home.scss';
+import { Search } from '../../components/Search/Search';
 
 export interface HomeProps {};
 
@@ -22,7 +23,7 @@ export default function (props: HomeProps) {
                 setUsername={setUsername} 
                 userName={userName}/>
 
-            <SearchBar />
+            <Search />
             </div>
         </div>
     )
