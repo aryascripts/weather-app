@@ -15,8 +15,6 @@ export const Search: React.FC = (props: Props) => {
     const [data, query, setQuery, loading, error] =
         useData("https://api.openweathermap.org/data/2.5/weather");
 
-    const context = useContext(CityContext);
-
     const handleSearchUpdate = (zip: string) => {
         if (zip) {
             const params = {
@@ -28,8 +26,10 @@ export const Search: React.FC = (props: Props) => {
         }
     }
 
-    const  [result, setResult] = 
+    const [result, setResult] = 
         useState<WeatherData | undefined>(undefined)
+
+    const context = useContext(CityContext);
 
     useEffect(() => {
         if (data && data.main) {
@@ -52,18 +52,19 @@ export const Search: React.FC = (props: Props) => {
             { result && 
                 <div className="search-plus-wrap">
                     <SearchResult data={result}/>
-                    <div onClick={() => {
-                        const item: City = {
+                    <div onClick={ () => {
+                        const city: City = {
                             name: result.name,
                             lat: '0',
                             lon: '0'
-                        }
-                        context?.setCities([...context.cities, item]);
+                        };
+                        context?.setCities([...context.cities, city]);
+
                     }} className="plus-btn pointer">+</div>
                 </div> 
             }
 
-            {JSON.stringify(context?.cities)}
+            {JSON.stringify(context!.cities)}
         </>
     )
 
