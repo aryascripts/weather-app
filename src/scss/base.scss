@@ -17,6 +17,7 @@ h1 {
 
 .flex { display: flex; }
 .column { @extend .flex; flex-direction: column; }
+.pointer { cursor: pointer }
 
 
 .arrow-up {
