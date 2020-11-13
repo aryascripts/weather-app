@@ -5,6 +5,7 @@ import { createBrowserHistory } from 'history';
 import Home from '../pages/Home/Home';
 import Content from '../pages/Content/Content';
 import { CityProvider } from '../stores/CityContext';
+import { SearchProvider } from '../stores/SearchContext';
 
 const history = createBrowserHistory({});
 
@@ -15,7 +16,9 @@ function App() {
         <Router history={history}>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <SearchProvider>
+                <Home />
+              </SearchProvider>
             </Route>
 
             <Route path="/weather">

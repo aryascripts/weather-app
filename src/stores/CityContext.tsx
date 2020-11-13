@@ -1,12 +1,8 @@
 import React, {createContext, useEffect, useState} from 'react';
 import { CITIES_KEY } from '../config/Variables';
+import { City } from './interfaces';
 
 
-export interface City {
-    name: string;
-    lat: string;
-    lon: string;
-}
 
 interface ICityContext {
     cities: City[];

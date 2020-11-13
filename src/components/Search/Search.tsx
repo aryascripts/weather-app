@@ -2,15 +2,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import useData from '../../apis/hooks/useData';
 import { Environment } from '../../config/Environment';
 import { SearchBar } from './SearchBar/SearchBar';
-import {SearchResult, WeatherData} from './SearchResult/SearchResult';
+import {SearchResult} from './SearchResult/SearchResult';
 import './Search.scss';
-import { City, CityContext } from '../../stores/CityContext';
+import { CityContext } from '../../stores/CityContext';
+import { City } from '../../stores/interfaces';
+import {SearchContext} from './../../stores/SearchContext';
 
 interface Props {
 
 }
 export const Search: React.FC = (props: Props) => {
-
 
     const [data, query, setQuery, loading, error] =
         useData("https://api.openweathermap.org/data/2.5/weather");
@@ -26,20 +27,20 @@ export const Search: React.FC = (props: Props) => {
         }
     }
 
-    const [result, setResult] = 
-        useState<WeatherData | undefined>(undefined)
-
-    const context = useContext(CityContext);
+    const cityContext = useContext(CityContext);
+    const searchContext = useContext(SearchContext);
 
     useEffect(() => {
         if (data && data.main) {
-            const result: WeatherData = {
+            const result: City = {
                 name: data.name,
-                high: data.main.temp_min,
-                low: data.main.temp_max,
-                current: data.main.temp
+                weather: {
+                    high: data.main.temp_min,
+                    low: data.main.temp_max,
+                    current: data.main.temp    
+                },
             };
-            setResult(result);
+            searchContext?.setResult(result);
         }
 
     }, [data])
@@ -49,22 +50,16 @@ export const Search: React.FC = (props: Props) => {
             <SearchBar handleSearchUpdate={handleSearchUpdate}/>
 
             {/* Display Results */}
-            { result && 
+            { searchContext?.result && 
                 <div className="search-plus-wrap">
-                    <SearchResult data={result}/>
-                    <div onClick={ () => {
-                        const city: City = {
-                            name: result.name,
-                            lat: '0',
-                            lon: '0'
-                        };
-                        context?.setCities([...context.cities, city]);
-
+                    <SearchResult data={searchContext.result}/>
+                    <div onClick={() => {
+                        if (searchContext.result) {
+                            cityContext?.setCities([...cityContext.cities, searchContext.result]);
+                        }
                     }} className="plus-btn pointer">+</div>
                 </div> 
             }
-
-            {JSON.stringify(context!.cities)}
         </>
     )
 

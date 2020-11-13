@@ -1,12 +1,6 @@
 import React from 'react';
+import { City } from '../../../stores/interfaces';
 import './SearchResult.scss';
-
-export interface WeatherData {
-    name: string; // city name
-    high: number;
-    low: number;
-    current: number;
-}
 
 interface HLProps {
     high: number;
@@ -31,7 +25,7 @@ export const HighLow: React.FC<HLProps> = (props: HLProps) => {
 }
 
 interface Props {
-    data: WeatherData | undefined;
+    data: City | undefined;
 }
 export const SearchResult: React.FC<Props> = (props: Props) => {
 
@@ -41,11 +35,11 @@ export const SearchResult: React.FC<Props> = (props: Props) => {
                 <div className="city-name">
                     {props.data?.name}
                 </div>
-                <HighLow high={+props.data.high}
-                    low={props.data.low} />
+                <HighLow high={+props.data.weather.high}
+                    low={props.data.weather.low} />
             </div>
             <div className="current">
-                {props.data.current.toFixed(0)}
+                {props.data.weather.current.toFixed(0)}
             </div>
         </div>
     ) : null);

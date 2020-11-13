@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useData from '../../../apis/hooks/useData';
 import { Environment } from '../../../config/Environment';
+import { SearchContext } from '../../../stores/SearchContext';
 import './SearchBar.scss';
 
 interface SearchBarProps {
@@ -11,28 +12,28 @@ const numbersOnly = new RegExp('^[0-9]+$');
 
 export function SearchBar(props: SearchBarProps) {
 
-    const [searchTerm, setSearchTerm] = useState<string>('')
+    const searchContext = useContext(SearchContext);
     const validateAndSave = (event: any) => {
         const val = event.target.value;
-        if (!val) setSearchTerm('')
+        if (!val) searchContext?.setSearchTerm('')
         if (val.length < 6 && numbersOnly.test(val)) {
-            setSearchTerm(val);
+            searchContext?.setSearchTerm(val);
         }
     };
 
     useEffect(() => {
-        if (searchTerm.length === 5) {
-            props.handleSearchUpdate(searchTerm);
+        if (searchContext?.searchTerm.length === 5) {
+            props.handleSearchUpdate(searchContext?.searchTerm);
         }
 
         else {
             props.handleSearchUpdate('');
         }
-    }, [searchTerm]);
+    }, [searchContext?.searchTerm]);
 
     return (
         <input className="search-bar"
-            value={searchTerm}
+            value={searchContext?.searchTerm}
             onChange={validateAndSave} />
     )
 }
