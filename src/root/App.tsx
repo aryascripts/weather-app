@@ -2,8 +2,8 @@ import React from 'react';
 import './App.scss';
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import Home from '../pages/Home/Home';
-import Content from '../pages/Content/Content';
+import {Home} from '../pages/Home/Home';
+import {WeatherInfo} from '../pages/Content/WeatherInfo';
 import { CityProvider } from '../stores/CityContext';
 import { SearchProvider } from '../stores/SearchContext';
 
@@ -22,7 +22,7 @@ function App() {
             </Route>
 
             <Route path="/weather">
-              <Content />
+              <WeatherInfo />
             </Route>
           </Switch>
         </Router>

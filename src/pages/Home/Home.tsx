@@ -5,9 +5,7 @@ import { USERNAME_KEY } from '../../config/Variables';
 import './Home.scss';
 import { Search } from '../../components/Search/Search';
 
-export interface HomeProps {};
-
-export default function (props: HomeProps) {
+const Home: React.FC = (props) => {
 
     const fromLocalStorage: string = localStorage.getItem(USERNAME_KEY) || '';
     const [userName, setUsername] = useState<string>(fromLocalStorage);
@@ -28,3 +26,5 @@ export default function (props: HomeProps) {
         </div>
     )
 };
+
+export {Home}
