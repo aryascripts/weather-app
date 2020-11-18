@@ -26,11 +26,12 @@ export const HighLow: React.FC<HLProps> = (props: HLProps) => {
 
 interface Props {
     data: City | undefined;
+    onClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void);
 }
 export const SearchResult: React.FC<Props> = (props: Props) => {
 
     return (props.data ? (
-        <div className="search-result">
+        <div onClick={props.onClick} className="search-result pointer">
             <div className="name-details">
                 <div className="city-name">
                     {props.data?.name}

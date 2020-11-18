@@ -7,6 +7,8 @@ import { City } from './interfaces';
 interface ICityContext {
     cities: City[];
     setCities: React.Dispatch<React.SetStateAction<City[]>>;
+    selectedCity: City | undefined;
+    setSelectedCity: React.Dispatch<React.SetStateAction<City | undefined>>;
 }
 
 const CityContext = createContext<ICityContext | undefined>(undefined);
@@ -16,8 +18,11 @@ const CityProvider: React.FC = props => {
     const [cities, setCities] = useState<City[]>(() => {
         return JSON.parse(localStorage.getItem(CITIES_KEY) || '[]');
     });
+    const [selectedCity, setSelectedCity] = useState<City | undefined>(undefined);
+
     const value = {
-        cities, setCities
+        cities, setCities,
+        selectedCity, setSelectedCity
     };
 
     useEffect(() => {
