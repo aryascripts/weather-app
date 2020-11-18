@@ -1,0 +1,33 @@
+@import './../../../scss/vars';
+.search-result {
+    width: 280px;
+    height: 73px;
+    background: $transparent;
+    
+    box-sizing: border-box;
+
+    // FONTS
+    color: white;
+
+    // DISPLAY
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .city-name {
+        font-size: 24px;
+    }
+    .current {
+        font-size: 45px;
+    }
+}
+
+.high-low {
+    display: flex;
+
+    .item {
+        margin-right: 5px;
+    }
+}
