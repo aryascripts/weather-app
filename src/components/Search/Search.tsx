@@ -8,10 +8,7 @@ import { CityContext } from '../../stores/CityContext';
 import { City } from '../../stores/interfaces';
 import {SearchContext} from './../../stores/SearchContext';
 
-interface Props {
-
-}
-export const Search: React.FC = (props: Props) => {
+export const Search: React.FC = (props) => {
 
     const [data, query, setQuery, loading, error] =
         useData("https://api.openweathermap.org/data/2.5/weather");

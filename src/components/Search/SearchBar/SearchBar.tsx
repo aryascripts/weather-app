@@ -33,6 +33,7 @@ export function SearchBar(props: SearchBarProps) {
 
     return (
         <input className="search-bar"
+            placeholder="Search..."
             value={searchContext?.searchTerm}
             onChange={validateAndSave} />
     )
